@@ -83,10 +83,9 @@ function createMap(earthquakes) {
     zoom: 5,
     layers: [satellitemap, earthquakes]
   });
-
-
   
-  
+
+//   Followed instructions from https://leafletjs.com/examples/choropleth/
   var legend = L.control({position: 'bottomright'});
 
   legend.onAdd = function () {
@@ -106,18 +105,7 @@ function createMap(earthquakes) {
 
   legend.addTo(myMap);
 
-  function getColor(mag) {
-    return mag >= 5 ? '#B71C1C' : 
-      mag >= 4 ? '#FF5722' : 
-      mag >= 3 ? '#FF8F00' :
-      mag >= 2 ? '#FDD835' : 
-      mag >= 1 ? '#CDDC39':
-      '#8BC34A';
-  };
 
-  // Create a layer control
-  // Pass in our baseMaps and overlayMaps
-  // Add the layer control to the map
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
@@ -131,33 +119,3 @@ function getColor(mag) {
       mag >= 1 ? '#CDDC39':
       '#8BC34A';
   };
-
-
-
-// example of the income exercise
-//   var legend = L.control({ position: "bottomright" });
-//   legend.onAdd = function() {
-//     var div = L.DomUtil.create("div", "info legend");
-//     var limits = [0, 1, 2, 3, 4, 5];
-//     var colors = ['#8BC34A', '#CDDC39', '#FDD835', '#FF8F00', '#FF5722', '#B71C1C']
-//     var labels = [];
-
-//     // Add min & max
-//     var legendInfo = "<h1>Magnitude</h1>" +
-//       "<div class=\"labels\">" +
-//         "<div class=\"min\">" + limits[0] + "</div>" +
-//         "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
-//       "</div>";
-
-//     div.innerHTML = legendInfo;
-
-//     limits.forEach(function(limit, index) {
-//       labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
-//     });
-
-//     div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-//     return div;
-//   };
-
-//   // Adding legend to the map
-//   legend.addTo(myMap);
